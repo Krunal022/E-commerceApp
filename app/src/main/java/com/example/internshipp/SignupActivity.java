@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,14 +40,24 @@ public class SignupActivity extends AppCompatActivity {
 
     Calendar calendar;
 
+    String Scity;
+    String sGender;
     Spinner city;
     //String[] cityArray = {"Ahmedabad","Vadodara","Surat","Rajkot","Gandhinagar","Kalol","Kadi","Mehsana","Dahod","Bharuch","Veraval","Ahmedabad","Vadodara","Surat","Rajkot","Gandhinagar","Kalol","Kadi","Mehsana","Dahod","Bharuch","Veraval"};
     ArrayList<String> arrayList;
+
+    SQLiteDatabase db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        db= openOrCreateDatabase("On_Internshipp",MODE_PRIVATE,null);
+        String tableQuery = "CREATE TABLE IF NOT EXISTS USERS(USERID INTEGER PRIMARY KEY AUTOINCREMENT,NAME VARCHAR(100),EMAIL VARCHAR(100),CONTACT INT(10),PASSWORD VARCHAR(100),GENDER VARCHAR(6),CITY VARCHAR(50),DOB VARCHAR(10))";
+        db.execSQL(tableQuery);
+
 
         name = findViewById(R.id.signup_name);
         email = findViewById(R.id.signup_email);
@@ -62,7 +74,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                 calendar.set(Calendar.YEAR, i);
                 calendar.set(Calendar.MONTH, i1);
-                calendar.set(Calendar.DAY_OF_MONTH, i2);
+                 calendar.set(Calendar.DAY_OF_MONTH, i2);
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
                 dob.setText(sdf.format(calendar.getTime()));
@@ -119,10 +131,11 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i==0){
-
+                    Scity="";
                 }
                 else {
-                    new CommonMethod(SignupActivity.this, arrayList.get(i));
+                    Scity = arrayList.get(i);
+                    new CommonMethod(SignupActivity.this, Scity);
                 }
             }
 
@@ -138,7 +151,8 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 RadioButton radioButton = findViewById(i); //i = R.id.signup_male,R.id.signup_female;
-                new CommonMethod(SignupActivity.this,radioButton.getText().toString());
+                sGender = radioButton.getText().toString();
+                new CommonMethod(SignupActivity.this,sGender);
             }
         });
 
@@ -171,44 +185,50 @@ public class SignupActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(name.getText().toString().trim().equals("")){
+                if (name.getText().toString().trim().equals("")) {
                     name.setError("Name Required");
-                }
-                else if (email.getText().toString().trim().equals("")) {
+                } else if (email.getText().toString().trim().equals("")) {
                     email.setError("Email Id Required");
                 } else if (!email.getText().toString().trim().matches(emailPattern)) {
                     email.setError("Valid Email Id Required");
-                }
-                else if(contact.getText().toString().trim().equals("")){
+                } else if (contact.getText().toString().trim().equals("")) {
                     contact.setError("Contact No. Required");
-                }
-                else if(contact.getText().toString().trim().length()<10){
+                } else if (contact.getText().toString().trim().length() < 10) {
                     contact.setError("Valid Contact No. Required");
-                }
-                else if (password.getText().toString().trim().equals("")) {
+                } else if (password.getText().toString().trim().equals("")) {
                     password.setError("Password Required");
                 } else if (password.getText().toString().trim().length() < 6) {
                     password.setError("Min. 6 Char Password Required");
-                }else if (confirmPassword.getText().toString().trim().equals("")) {
+                } else if (confirmPassword.getText().toString().trim().equals("")) {
                     confirmPassword.setError("Confirm Password Required");
                 } else if (confirmPassword.getText().toString().trim().length() < 6) {
                     confirmPassword.setError("Min. 6 Char Confirm Password Required");
-                }
-                else if(!confirmPassword.getText().toString().trim().matches(password.getText().toString().trim())){
+                } else if (!confirmPassword.getText().toString().trim().matches(password.getText().toString().trim())) {
                     confirmPassword.setError("Password Does Not Match");
-                }
-                else if(dob.getText().toString().trim().equals("")){
+                } else if (gender.getCheckedRadioButtonId() == -1) {
+                    new CommonMethod(SignupActivity.this, "Please select gender");
+                } else if (Scity.equals("")) {
+                    new CommonMethod(SignupActivity.this, "Please select city");
+                } else if (dob.getText().toString().trim().equals("")) {
                     dob.setError("Please Select Date of Birth");
-                }
-                else {
-                    System.out.println("Signup Successfully");
-                    Toast.makeText(SignupActivity.this, "Signup Successfully", Toast.LENGTH_LONG).show();
-                    //new CommonMethod(SignupActivity.this, "Signup Successfully");
-                    Snackbar.make(view, "Login Successfully", Snackbar.LENGTH_SHORT).show();
-                    //new CommonMethod(view, "Login Successfully");
-                    Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    onBackPressed();
+                } else {
+                    String selectQuery = "SELECT * FROM USERS WHERE EMAIL='" + email.getText().toString() + "' OR CONTACT='" + contact.getText().toString() + "'";
+                    Cursor cursor = db.rawQuery(selectQuery, null);
+                    if (cursor.getCount() > 0) {
+                        new CommonMethod(SignupActivity.this,"Email Id/Contact No. Already Registered");
+                    } else {
+                        String insertQuery = "INSERT INTO USERS VALUES(NULL,'" + name.getText().toString() + "','" + email.getText().toString() + "','" + contact.getText().toString() + "','" + password.getText().toString() + "','" + sGender + "','" + Scity + "','" + dob.getText().toString() + "')";
+                        db.execSQL(insertQuery);
+
+                        System.out.println("Signup Successfully");
+                        Toast.makeText(SignupActivity.this, "Signup Successfully", Toast.LENGTH_LONG).show();
+                        //new CommonMethod(SignupActivity.this, "Signup Successfully");
+                        Snackbar.make(view, "Login Successfully", Snackbar.LENGTH_SHORT).show();
+                        //new CommonMethod(view, "Login Successfully");
+                        Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        onBackPressed();
+                    }
                 }
             }
         });
