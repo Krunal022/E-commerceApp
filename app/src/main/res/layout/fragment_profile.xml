@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/_30sdp"
+    android:paddingTop="@dimen/_40sdp"
+    android:paddingRight="@dimen/_30sdp"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/home_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/personpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/home_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/mailpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Email"
+            android:layout_below="@+id/home_name"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/home_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/contactpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Contact No."
+            android:layout_below="@+id/home_email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+
+
+        <RadioGroup
+            android:id="@+id/home_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/home_contact"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/home_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/home_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Female" />
+
+        </RadioGroup>
+
+        <Spinner
+            android:popupBackground="@drawable/custome_background"
+            android:background="@drawable/custome_background"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_below="@id/home_gender"
+            android:id="@+id/home_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <EditText
+            android:id="@+id/home_dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_city"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/personpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:editable="false"
+            android:hint="Date Of Birth"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp"
+            android:textSize="@dimen/_16sdp" />
+
+        <Button
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/home_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_update_profile"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:backgroundTint="#E1556F"
+            android:background="@drawable/custome_button_white"
+            android:text="Edit Profile"
+            android:textColor="@color/white_Trasp"
+            android:textStyle="bold" />
+
+        <Button
+            android:visibility="gone"
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/home_update_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_dob"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:backgroundTint="#E1556F"
+            android:background="@drawable/custome_button_white"
+            android:text="Update profile"
+            android:textColor="@color/white_Trasp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:textSize="@dimen/_18sdp"
+            android:id="@+id/home_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_edit_profile"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_button_white"
+            android:text="logout"
+            android:textColor="#CE92A4"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

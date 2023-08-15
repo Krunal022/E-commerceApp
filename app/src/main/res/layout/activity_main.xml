@@ -39,31 +39,58 @@
             android:paddingVertical="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textColorHint="@color/white_Trasp" />
-
-        <EditText
-            android:textSize="@dimen/_16sdp"
-            android:id="@+id/main_password"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/main_email"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/custome_border"
-            android:drawableLeft="@drawable/password"
-            android:drawablePadding="@dimen/_10sdp"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="@dimen/_10sdp"
-            android:paddingHorizontal="@dimen/_20sdp"
-            android:paddingVertical="@dimen/_10sdp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white_Trasp" />
+            android:id="@+id/main_password_frame">
+
+            <EditText
+                android:textSize="@dimen/_16sdp"
+                android:id="@+id/main_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/main_email"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/custome_border"
+                android:drawableLeft="@drawable/password"
+                android:drawablePadding="@dimen/_10sdp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white_Trasp" />
+            <ImageView
+                android:id="@+id/main_password_hide"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:src="@drawable/password_hide" />
+
+            <ImageView
+                android:id="@+id/main_password_show"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_gravity="center_vertical|end"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:src="@drawable/password_show"
+                android:visibility="gone" />
+
+
+        </FrameLayout>
+
 
         <CheckBox
             android:textSize="@dimen/_14sdp"
-            android:id="@+id/checkbox"
+            android:id="@+id/main_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/main_password"
+            android:layout_below="@id/main_password_frame"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:buttonTint="@color/white_Trasp"
@@ -75,7 +102,7 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/checkbox"
+            android:layout_below="@+id/main_checkbox"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/custome_button_white"

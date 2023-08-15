@@ -20,7 +20,6 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.internshipp.HomeActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
@@ -225,7 +224,7 @@ public class SignupActivity extends AppCompatActivity {
                         //new CommonMethod(SignupActivity.this, "Signup Successfully");
                         Snackbar.make(view, "Login Successfully", Snackbar.LENGTH_SHORT).show();
                         //new CommonMethod(view, "Login Successfully");
-                        Intent intent = new Intent(SignupActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(SignupActivity.this, ProfileFragment.class);
                         startActivity(intent);
                         onBackPressed();
                     }
