@@ -1,6 +1,7 @@
 package com.example.internshipp;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyHolder> {
@@ -16,10 +16,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyHolder
     Context context;
     String[] nameArray;
     int[] imageArray;
-    public ProductAdapter(Context context, String[] nameArray, int[] imageArray) {
+    String[] priceArray;
+    String[] descArray;
+    SharedPreferences sp;
+    public ProductAdapter(Context context, String[] nameArray, int[] imageArray, String[] priceArray, String[] descArray) {
         this.context = context;
         this.nameArray = nameArray;
         this.imageArray = imageArray;
+        this.priceArray = priceArray;
+        this.descArray = descArray;
+        sp = context.getSharedPreferences(ConstantSp.PREF,Context.MODE_PRIVATE);
     }
 
     @NonNull
@@ -31,11 +37,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyHolder
 
     public class MyHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView name;
+        TextView name,price;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.custom_product_image);
             name = itemView.findViewById(R.id.custome_product_name);
+            price = itemView.findViewById(R.id.custome_product_price);
         }
     }
 
@@ -43,7 +50,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyHolder
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.imageView.setImageResource(imageArray[position]);
         holder.name.setText(nameArray[position]);
+        holder.price.setText(ConstantSp.PRICE_SYMBOL+priceArray[position]);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 sp.edit().putString(ConstantSp.PRODUCT_NAME,nameArray[position]).commit();
+                 sp.edit().putInt(ConstantSp.PRODUCT_IMAGE,imageArray[position]).commit();
+                sp.edit().putString(ConstantSp.PRODUCT_PRICE,priceArray[position]).commit();
+                sp.edit().putString(ConstantSp.PRODUCT_DESC,descArray[position]).commit();
+                 new CommonMethod(context, ProductDetailActivity.class);
+            }
+        });
     }
 
     @Override
