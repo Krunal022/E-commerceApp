@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/custome_background"
     tools:context=".ProductDetailActivity">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
 
     <ImageView
 
@@ -47,10 +50,37 @@
         android:layout_marginTop="@dimen/_10sdp" />
     <Button
         android:textSize="@dimen/_18sdp"
-        android:id="@+id/product_detail_buynow"
+        android:id="@+id/product_detail_wishlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_detail_desc"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/custome_button_white"
+        android:text="Add To Wishlist"
+        android:textColor="#CE92A4"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+    <Button
+        android:textSize="@dimen/_18sdp"
+        android:id="@+id/product_detail_add_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_detail_wishlist"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/custome_button_white"
+        android:text="Add To Cart"
+        android:textColor="#CE92A4"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+
+    <Button
+        android:textSize="@dimen/_18sdp"
+        android:id="@+id/product_detail_buynow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_detail_add_cart"
         android:layout_marginHorizontal="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/custome_button_white"
@@ -59,4 +89,9 @@
         android:textStyle="bold"
         app:backgroundTint="@null" />
 
+
 </RelativeLayout>
+
+
+
+</ScrollView>
