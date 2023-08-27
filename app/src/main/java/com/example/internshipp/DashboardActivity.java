@@ -37,6 +37,16 @@ public class DashboardActivity extends AppCompatActivity {
                     manager.beginTransaction().replace(R.id.dashboard_relative,new HomeFragment()).commit();
                     mBottomNavigation.show(HOME_MENU,true);
                 }
+                else if(item.getId()==CART_MENU){
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction().replace(R.id.dashboard_relative,new CartFragment()).commit();
+                    mBottomNavigation.show(CART_MENU,true);
+                }
+                else if(item.getId()==WISHLIST_MENU){
+                    FragmentManager manager = getSupportFragmentManager();
+                    manager.beginTransaction().replace(R.id.dashboard_relative,new WishlistFragment()).commit();
+                    mBottomNavigation.show(WISHLIST_MENU,true);
+                }
                 else if(item.getId()==PROFILE_MENU){
                     FragmentManager manager = getSupportFragmentManager();
                     manager.beginTransaction().replace(R.id.dashboard_relative,new ProfileFragment()).commit();

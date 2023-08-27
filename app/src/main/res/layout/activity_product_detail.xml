@@ -61,12 +61,25 @@
         android:textColor="#CE92A4"
         android:textStyle="bold"
         app:backgroundTint="@null" />
-    <Button
+        <Button
+        android:textSize="@dimen/_18sdp"
+        android:id="@+id/product_detail_wishlist_remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_detail_wishlist"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/custome_button_white"
+        android:text="Remove From Wishlist"
+        android:textColor="#CE92A4"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+        <Button
         android:textSize="@dimen/_18sdp"
         android:id="@+id/product_detail_add_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/product_detail_wishlist"
+        android:layout_below="@+id/product_detail_wishlist_remove"
         android:layout_marginHorizontal="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/custome_button_white"
