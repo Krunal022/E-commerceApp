@@ -21,8 +21,9 @@ import java.util.ArrayList;
 public class WishlistFragment extends Fragment {
 
     RecyclerView recyclerView;
-
     ArrayList<Whishlist> arrayList;
+    SQLiteDatabase db;
+    SharedPreferences sp;
     String [] idArray ={"1","2","3"};
     String [] nameArray={"VARSITY JACKET","CHOLE BHATURE","GREEN KURTA",};
     int[] imageArray ={R.drawable.jecket,R.drawable.cholle,R.drawable.kurtta};
@@ -32,8 +33,6 @@ public class WishlistFragment extends Fragment {
             "Kurta is a long tunic-style shirt that is traditionally worn by South Asian men, e specially Indians.\nKurtas for men are available in a variety of prints and designs. "
     };
 
-    SQLiteDatabase db;
-    SharedPreferences sp;
     public WishlistFragment() {
         // Required empty public constructor
     }

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custome_background"
+    android:paddingLeft="@dimen/_30sdp"
+    android:paddingTop="@dimen/_40sdp"
+    android:paddingRight="@dimen/_30sdp"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/shipping_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/personpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/shipping_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/mailpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Email"
+            android:layout_below="@+id/shipping_name"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/shipping_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/contactpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Contact No."
+            android:layout_below="@+id/shipping_email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/shipping_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shipping_contact"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/password"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Address"
+            android:minLines="2"
+            android:gravity="start"
+            android:padding="@dimen/_10sdp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+        <Spinner
+            android:popupBackground="@drawable/custome_background"
+            android:background="@color/pink_red"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_below="@id/shipping_address"
+            android:id="@+id/shipping_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <RadioGroup
+            android:id="@+id/shipping_payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shipping_city"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/shipping_cod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cash On Delivery" />
+
+            <RadioButton
+                android:id="@+id/shipping_online"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Online" />
+
+        </RadioGroup>
+
+        <Button
+            android:textSize="@dimen/_18sdp"
+            android:id="@+id/shipping_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shipping_payment"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_button_white"
+            android:text="Continue"
+            android:textColor="#CE92A4"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

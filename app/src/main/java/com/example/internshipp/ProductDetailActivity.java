@@ -24,7 +24,7 @@ public class ProductDetailActivity extends AppCompatActivity implements PaymentR
 
     ImageView imageView;
     TextView name,price, desc;
-    Button buyNow,addCart,addWishlist,removeWishlist;
+    Button buyNow,addCart,removeCart,addWishlist,removeWishlist;
     SharedPreferences sp;
     Checkout checkout;
     SQLiteDatabase db;
@@ -61,6 +61,19 @@ public class ProductDetailActivity extends AppCompatActivity implements PaymentR
         Checkout.preload(getApplicationContext());
 
         addCart = findViewById(R.id.product_detail_add_cart);
+        removeCart = findViewById(R.id.product_detail_remove_cart);
+
+        String selectCartQuery ="SELECT * FROM CART WHERE USERID='"+sp.getString(ConstantSp.ID,"")+"' AND PRODUCTID='"+sp.getString(ConstantSp.PRODUCT_ID,"")+"'  AND ORDERID='0' " ;
+        Cursor cursorCart =db.rawQuery(selectCartQuery,null);
+        if(cursorCart.getCount()>0){
+            addCart.setVisibility(View.GONE);
+            removeCart.setVisibility(View.VISIBLE);
+        }
+        else {
+            addCart.setVisibility(View.VISIBLE);
+            removeCart.setVisibility(View.GONE);
+        }
+
         addCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,16 +83,30 @@ public class ProductDetailActivity extends AppCompatActivity implements PaymentR
                     new CommonMethod(ProductDetailActivity.this, "Product Already Added In Cart");
                 }
                 else {
-                    int iQty = 3;
+                    int iQty = 1;
                     //Int-->String typeCasting
                     int iTotalPrice = Integer.parseInt(sp.getString(ConstantSp.PRODUCT_PRICE, "")) * iQty;
 
                     String insertQuery = "INSERT INTO CART VALUES(NULL,'0','" + sp.getString(ConstantSp.ID, "") + "','" + sp.getString(ConstantSp.PRODUCT_ID, "") + "','" + sp.getString(ConstantSp.PRODUCT_NAME, "") + "','" + sp.getInt(ConstantSp.PRODUCT_IMAGE, 0) + "','" + sp.getString(ConstantSp.PRODUCT_DESC, "") + "','" + sp.getString(ConstantSp.PRODUCT_PRICE, "") + "','" + iQty + "','" + iTotalPrice + "')";
                     db.execSQL(insertQuery);
                     new CommonMethod(ProductDetailActivity.this, "Product Added In Cart Successfully");
+                    addCart.setVisibility(View.GONE);
+                    removeCart.setVisibility(View.VISIBLE);
                 }
             }
         });
+        removeCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String deleteQuery="DELETE FROM CART WHERE USERID='"+sp.getString(ConstantSp.ID,"")+"' AND PRODUCTID='"+sp.getString(ConstantSp.PRODUCT_ID,"")+"' AND ORDERID='0'";
+                db.execSQL(deleteQuery);
+                new CommonMethod(ProductDetailActivity.this,"Product Removed From Cart");
+                addCart.setVisibility(View.VISIBLE);
+                removeCart.setVisibility(View.GONE);
+            }
+        });
+
+
         addWishlist = findViewById(R.id.product_detail_wishlist);
         removeWishlist = findViewById(R.id.product_detail_wishlist_remove);
 
