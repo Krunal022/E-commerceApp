@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/custome_background"
+    tools:context=".SendSmsActivity">
+
+    <EditText
+        android:id="@+id/send_sms_contact"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_Trasp"
+        android:textSize="@dimen/_16sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:background="@drawable/custome_border"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:maxLines="10"
+        android:inputType="phone"
+        android:hint="Contact No."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/send_sms_message"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white_Trasp"
+        android:textSize="@dimen/_16sdp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:drawablePadding="@dimen/_10sdp"
+        android:background="@drawable/custome_border"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:minLines="2"
+        android:gravity="start"
+        android:hint="Message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:textSize="@dimen/_16sdp"
+        android:id="@+id/send_sms_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signup_signup"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/custome_button_white"
+        android:text="Send sms"
+        android:textColor="#CE92A4"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custome_background"
+    android:paddingLeft="@dimen/_30sdp"
+    android:paddingTop="@dimen/_50sdp"
+    android:paddingRight="@dimen/_30sdp"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_450sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/intern"
+
+            />
+
+        <EditText
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/login_with_otp_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/image"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@drawable/custome_border"
+            android:drawableLeft="@drawable/contactpic"
+            android:drawablePadding="@dimen/_10sdp"
+            android:hint="Contact No."
+            android:inputType="phone"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white_Trasp" />
+        <CheckBox
+            android:textSize="@dimen/_14sdp"
+            android:id="@+id/login_with_otp_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_with_otp_contact"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:buttonTint="@color/white_Trasp"
+            android:text="Remember me"
+            android:textColor="@color/white_Trasp" />
+
+        <Button
+            android:textSize="@dimen/_18sdp"
+            android:id="@+id/login_with_otp_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_with_otp_checkbox"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/custome_button_white"
+            android:text="Log in"
+            android:textColor="#CE92A4"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:textSize="@dimen/_16sdp"
+            android:id="@+id/login_with_otp_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_with_otp_login"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:backgroundTint="#E1556F"
+            android:background="@drawable/custome_button_white"
+            android:text="Sign Up"
+            android:textColor="@color/white_Trasp"
+            android:textStyle="bold" />
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

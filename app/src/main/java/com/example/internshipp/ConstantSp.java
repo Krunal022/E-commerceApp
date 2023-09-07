@@ -17,7 +17,9 @@ public class ConstantSp {
     public static String PRODUCT_IMAGE = "product_image";
     public static String PRODUCT_PRICE = "product_price";
     public static String PRODUCT_DESC = "product_desc";
-
     public static String PRICE_SYMBOL = "₹";
+    public static String OTP_CODE = "otp_code";
+
+
 
 }
